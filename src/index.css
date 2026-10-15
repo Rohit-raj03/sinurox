@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-heading: 'Outfit', sans-serif;
+    --font-body: 'Inter', sans-serif;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: #05070b;
+    color: #f1f5f9;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+}
+
+/* Subtle dot mesh background */
+.bg-mesh-pattern {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #070a12;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ef4444;
+}
+
+/* Glassmorphism primitives */
+.glass-panel {
+  background: rgba(13, 18, 30, 0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-panel-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-panel-hover:hover {
+  background: rgba(20, 29, 48, 0.85);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.7);
+}
+
+.glow-red {
+  box-shadow: 0 0 45px -10px rgba(239, 68, 68, 0.4);
+}
+
+.glow-gold {
+  box-shadow: 0 0 45px -10px rgba(245, 158, 11, 0.4);
+}
+
+.glow-pink {
+  box-shadow: 0 0 45px -10px rgba(236, 72, 153, 0.4);
+}
+
+/* Ambient glow orb animations */
+@keyframes pulseOrb {
+  0%, 100% {
+    transform: scale(1) translate(0px, 0px);
+    opacity: 0.25;
+  }
+  50% {
+    transform: scale(1.1) translate(20px, -15px);
+    opacity: 0.4;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulseOrb 8s infinite ease-in-out;
+}
+
+/* Shimmer animation */
+@keyframes shimmerWave {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0) 100%);
+  background-size: 200% 100%;
+  animation: shimmerWave 3s infinite linear;
+}
+
+/* Marquee track */
+@keyframes marqueeScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 25s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
